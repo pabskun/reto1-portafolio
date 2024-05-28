@@ -246,27 +246,38 @@
                 const items = data.querySelectorAll("item");
                 let html = '';
                 items.forEach(el => {
-                    const title = el.querySelector("title").textContent;
-                    const link = el.querySelector("link").textContent;
-                    const description = el.querySelector("description").textContent;
-                    const content = el.querySelector("content\\:encoded").textContent;
+                    const titleElement = el.querySelector("title");
+                    const linkElement = el.querySelector("link");
+                    const descriptionElement = el.querySelector("description");
+                    const contentElement = el.querySelector("content\\:encoded");
 
-                    // Extract image from content
-                    const imgMatch = content.match(/<img.*?src="(.*?)"/);
-                    const imgSrc = imgMatch ? imgMatch[1] : '';
+                    if (titleElement && linkElement && contentElement) {
+                        const title = titleElement.textContent;
+                        const link = linkElement.textContent;
+                        const description = descriptionElement ? descriptionElement.textContent : '';
+                        const content = contentElement.textContent;
 
-                    // Extract brief description without HTML tags
-                    const briefDescription = content.replace(/<.*?>/g, '').substring(0, 150) + '...';
+                        // Extract image from content
+                        const imgMatch = content.match(/<img.*?src="(.*?)"/);
+                        const imgSrc = imgMatch ? imgMatch[1] : '';
 
-                    html += `
-                        <div class="blog-post">
-                            ${imgSrc ? `<img src="${imgSrc}" alt="${title}">` : ''}
-                            <h2><a href="${link}" target="_blank">${title}</a></h2>
-                            <p>${briefDescription}</p>
-                        </div>
-                    `;
+                        // Extract brief description without HTML tags
+                        const briefDescription = content.replace(/<.*?>/g, '').substring(0, 150) + '...';
+
+                        html += `
+                            <div class="blog-post">
+                                ${imgSrc ? `<img src="${imgSrc}" alt="${title}">` : ''}
+                                <h2><a href="${link}" target="_blank">${title}</a></h2>
+                                <p>${briefDescription}</p>
+                            </div>
+                        `;
+                    }
                 });
                 document.getElementById('blog-posts').innerHTML = html;
+            })
+            .catch(error => {
+                console.error("Error fetching or parsing the RSS feed:", error);
+                document.getElementById('blog-posts').innerHTML = "<p>No se pudieron cargar las entradas del blog.</p>";
             });
     </script>
         <section>
