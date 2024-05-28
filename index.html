@@ -237,7 +237,7 @@
         <div id="blog-posts"></div>
 
     <script>
-        const rssFeedUrl = 'https://pablom129.sg-host.com/feed/';
+       const rssFeedUrl = 'https://pablom129.sg-host.com/feed/';
         
         fetch(rssFeedUrl)
             .then(response => response.text())
@@ -249,13 +249,14 @@
                     const title = el.querySelector("title").textContent;
                     const link = el.querySelector("link").textContent;
                     const description = el.querySelector("description").textContent;
-                    
-                    // Extract image from description
-                    const imgMatch = description.match(/<img.*?src="(.*?)"/);
+                    const content = el.querySelector("content\\:encoded").textContent;
+
+                    // Extract image from content
+                    const imgMatch = content.match(/<img.*?src="(.*?)"/);
                     const imgSrc = imgMatch ? imgMatch[1] : '';
 
                     // Extract brief description without HTML tags
-                    const briefDescription = description.replace(/<.*?>/g, '').substring(0, 150) + '...';
+                    const briefDescription = content.replace(/<.*?>/g, '').substring(0, 150) + '...';
 
                     html += `
                         <div class="blog-post">
@@ -263,7 +264,7 @@
                             <h2><a href="${link}" target="_blank">${title}</a></h2>
                             <p>${briefDescription}</p>
                         </div>
-                    `; 
+                    `;
                 });
                 document.getElementById('blog-posts').innerHTML = html;
             });
