@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mascotas - Gatitos</title>
-  
+    <link rel="stylesheet" href="index.css">
     <!-- Uso de CDN de FontAwesome (mala práctica para carga lenta) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Mala práctica: Incluir estilos CSS en línea en el archivo HTML -->
@@ -220,31 +220,6 @@
     </header>
 
     <main>
-        <div id="blog-posts"></div>
-
-    <script>
-        const rssFeedUrl = 'https://pablom129.sg-host.com/feed/';
-        
-        fetch(rssFeedUrl)
-            .then(response => response.text())
-            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
-            .then(data => {
-                const items = data.querySelectorAll("item");
-                let html = '';
-                items.forEach(el => {
-                    const title = el.querySelector("title").textContent;
-                    const link = el.querySelector("link").textContent;
-                    const description = el.querySelector("description").textContent;
-                    html += `
-                        <div class="blog-post">
-                            <h2><a href="${link}" target="_blank">${title}</a></h2>
-                            <p>${description}</p>
-                        </div>
-                    `;
-                });
-                document.getElementById('blog-posts').innerHTML = html;
-            });
-    </script>
         <section>
             <h2>¡Bienvenido a nuestra web!</h2>
             <p>Somos amantes de los gatitos y aquí encontrarás toda la información que necesitas sobre estos adorables animales.</p>
