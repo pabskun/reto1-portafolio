@@ -175,6 +175,20 @@
             width: calc(33% - 10px);
             border-radius: 8px;
         }
+        .blog-post {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        .blog-post h2 {
+            margin: 0;
+        }
+        .blog-post p {
+            margin: 5px 0;
+        }
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+        }
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -235,15 +249,23 @@
                     const title = el.querySelector("title").textContent;
                     const link = el.querySelector("link").textContent;
                     const description = el.querySelector("description").textContent;
+                    
+                    // Extract image from description
+                    const imgMatch = description.match(/<img.*?src="(.*?)"/);
+                    const imgSrc = imgMatch ? imgMatch[1] : '';
+
+                    // Extract brief description without HTML tags
+                    const briefDescription = description.replace(/<.*?>/g, '').substring(0, 150) + '...';
+
                     html += `
                         <div class="blog-post">
+                            ${imgSrc ? `<img src="${imgSrc}" alt="${title}">` : ''}
                             <h2><a href="${link}" target="_blank">${title}</a></h2>
-                            <p>${description}</p>
+                            <p>${briefDescription}</p>
                         </div>
                     `;
                 });
                 document.getElementById('blog-posts').innerHTML = html;
-            });
     </script>
         <section>
             <h2>¡Bienvenido a nuestra web!</h2>
