@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mascotas - Gatitos</title>
     <link rel="stylesheet" href="index.css">
-    <!-- Uso de CDN de FontAwesome (mala práctica para carga lenta) -->
+
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -31,10 +31,10 @@
         <section>
             <h2>Nuestros Gatitos</h2>
             <div class="gallery">
-                <img src="imgs/gato-naranja.webp" alt="Gatito Naranja">
-                <img src="imgs/gato-negro.webp" alt="Gatito Negro">
-                <img src="imgs/gato-grisblanco.webp" alt="Gatito Gris y Blanco">
-                <img src="imgs/gato-gris.webp" alt="Gatito Gris">
+                <img src="imgs/gato-naranja.webp" alt="Gatito Naranja" loading="lazy">
+                <img src="imgs/gato-negro.webp" alt="Gatito Negro" loading="lazy">
+                <img src="imgs/gato-grisblanco.webp" alt="Gatito Gris y Blanco" loading="lazy">
+                <img src="imgs/gato-gris.webp" alt="Gatito Gris" loading="lazy">
             </div>
         </section>
 
@@ -67,15 +67,13 @@
             <p>No te pierdas nuestros videos educativos que cubren una variedad de temas, desde cómo jugar de manera segura con tu gato hasta cómo identificar y tratar problemas de salud comunes. ¡Visítanos ahora y mejora la vida de tu gatito!</p>
         </section>
         
-
-        <!-- Sección con GIFs animados de gatitos -->
         <section class="gif-gallery">
-            <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Gatito GIF 1">
-            <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="Gatito GIF 2">
-            <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Gatito GIF 3">
-            <img src="https://media.giphy.com/media/lJNoBCvQYp7nq/giphy.gif" alt="Gatito GIF 4">
-            <img src="https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif" alt="Gatito GIF 5">
-            <img src="https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif" alt="Gatito GIF 6">
+            <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Gatito GIF 1" loading="lazy">
+            <img src="https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif" alt="Gatito GIF 2" loading="lazy">
+            <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Gatito GIF 3" loading="lazy">
+            <img src="https://media.giphy.com/media/lJNoBCvQYp7nq/giphy.gif" alt="Gatito GIF 4" loading="lazy">
+            <img src="https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif" alt="Gatito GIF 5" loading="lazy">
+            <img src="https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif" alt="Gatito GIF 6" loading="lazy">
         </section>
     </main>
 
@@ -87,8 +85,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js" async></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" async></script>
     <script src="scripts.js" async></script>
-    
-    <!-- Mala práctica: Imágenes sin tamaño especificado -->
-    <img src="imgs/gato-naranja.webp" alt="Gatito sin tamaño">
+
+    <img src="imgs/gato-naranja.webp" alt="Gatito sin tamaño" class="full-width-image" loading="lazy">
 </body>
 </html>
